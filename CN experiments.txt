@@ -1,0 +1,113 @@
+EXP1:
+
+1.create folder
+2.addfile
+3.rightclick>properties
+4.sharing>share
+5.add everyone
+6.advance setting>tick share this folder
+7.permissions>everyone allow read
+
+on client:
+1.copy server ip addreds
+2.paste ip addres on client on run , //100.100.10.1
+
+
+EXP2
+
+on powershell
+
+1.hostname
+2.ipconfig
+3.ipconfig /all
+4.ipconfig /release
+5.ipconfig /renew
+6.ping "address-ipv4"
+7.tracert (traceroute - linux)
+7.pathping
+8.arp -a
+9.netstat
+
+EXP3:
+
+Wireshark
+
+1.sudo wireshark
+2.etho - ensp0
+3.apply filter - arp
+4.what is arp
+5.analyse packect..(1-3)
+6.statistics>flowgraph
+
+EXP4:
+
+wireshark
+
+1.sudo wireshark
+2.terminal - ping 1.1.1.1
+3.filter - icmp
+4.terminal - traceroute 1.1.1.1
+5.filter - icmp
+6. terminal - mtr
+
+EXP5:
+
+server
+1.remove telnetd
+2.purge telnetd
+3.apt install telnetd
+4.ufw allow 23
+
+5. conncet 3 pc to router
+
+6.network settings - address 192.168.1.10,network 255.255.255.0
+7.do on all 3 pcs with different address
+
+8. check ping
+
+checker
+9.sudo wireshark
+10.enp30
+12.filter telnet
+
+client
+11.telnet 192.168.1.10
+12: login/ password - of server
+13: client can asscess server
+
+
+EXP6:
+
+windows
+1.FTPserver.exe
+2.wizard
+3.no->accountname ->pass/repass->select share directory
+
+on client
+4.ftp://ip.ip.ip.ip
+5.login accname/pass
+
+EXP7:
+
+abyss webserver
+
+linuc-apache2
+1.remove & purge apache2
+2.install apache2
+3.sudo ufw allow 80
+4.cd var/www/html
+5.rm then nano
+
+EXP8:
+
+PartA:
+1.dhcpwiz.exe
+2.next next 100.69.100.10 - 200
+
+PartB:
+1.pplus_us.exe
+2. proxy+
+3.user settings >newtwork>use proxy server
+4.srttings page>general> pc's ip +proxy port
+
+EXP9:
