@@ -1,0 +1,408 @@
+1) Share a Folder from a PC Connected to LAN
+
+Objective:
+To share resources like files/folders among multiple computers connected within a LAN.
+
+Procedure (Windows):
+
+i)Right-click on the folder → Select Properties → Sharing tab.
+
+ii)Click Share, add users, and set permissions (Read/Write).
+
+iii)A shared network path like \ComputerName\SharedFolder is created.
+
+iv)Other PCs on the same LAN can access it via:
+
+v)Ensure all PCs are in the same workgroup and have the same IP subnet.
+
+Purpose:
+Enables quick file sharing, backup, and collaboration in a LAN without using removable drives.
+
+i. Compare Straight and Cross Cable
+
+Straight-Through Cable:
+
+Same pin configuration on both ends (T568A ↔ T568A or T568B ↔ T568B)
+
+Used to connect different devices (PC–Switch, Switch–Router)
+
+Transmit and receive pins remain the same
+
+Common in office LAN setups
+
+Cross-Over Cable:
+
+One end T568A, other end T568B
+
+Used to connect similar devices (PC–PC, Switch–Switch)
+
+Transmit connects to receive
+
+Often replaced by Auto-MDIX in modern NICs
+
+ii. Applications & Specifications of UTP Cat-5 Cable
+
+Full Form: Unshielded Twisted Pair, Category 5
+Structure: 4 twisted pairs (8 copper wires) + RJ-45 connector
+Frequency: 100 MHz
+Speed: Up to 100 Mbps (Fast Ethernet)
+Maximum Length: 100 meters
+Applications:
+
+Ethernet LAN (10Base-T, 100Base-TX)
+
+Telephone and CCTV systems
+
+Connecting PCs, switches, routers
+Advantages: Inexpensive, flexible, easy to install, low signal loss
+
+iii. Difference Between Switch and Hub
+
+Hub:
+
+Works on OSI Layer 1 (Physical)
+
+Broadcasts data to all ports
+
+No intelligence, shared bandwidth
+
+More collisions, slower
+
+Used in small or old networks
+
+Switch:
+
+Works on OSI Layer 2 (Data Link)
+
+Sends data only to target MAC address
+
+Maintains MAC table
+
+Dedicated bandwidth, faster, more secure
+
+Used in modern LANs
+
+iv. Discuss PICT LAN Structure
+
+Example (PICT or your college):
+
+Star topology using managed switches
+
+CAT-6 UTP cables for connection
+
+Central router connecting departments and internet
+
+Servers: DHCP, DNS, FTP, Web, and Mail
+
+IP Scheme: Private IPs (192.168.x.x) assigned by DHCP
+
+Firewall ensures network security
+
+Wi-Fi access points for wireless coverage
+
+Advantages:
+High speed, easy fault detection, centralized control
+
+v. Explain & Compare Network Topologies
+
+Bus Topology:
+
+All nodes share one backbone cable
+
+Simple and cheap
+
+Single cable failure breaks entire network
+
+Star Topology:
+
+All devices connect to a central switch
+
+Reliable, scalable, easy to manage
+
+Switch failure affects all devices
+
+Ring Topology:
+
+Each node connected to two others forming a loop
+
+Predictable performance
+
+Break affects entire ring
+
+Mesh Topology:
+
+Each node connected to every other node
+
+High reliability, no single point of failure
+
+Expensive and complex wiring
+
+Hybrid Topology:
+
+Combination of two or more topologies
+
+Flexible, scalable
+
+Complex design and maintenance
+
+Commonly used topology: Star
+
+vi. Find Details of the NIC from Your System
+
+Commands:
+
+Windows: ipconfig /all
+
+Linux: ifconfig or ip addr
+
+Details Displayed:
+
+Adapter Name (e.g., Intel Ethernet Adapter)
+
+MAC Address (Physical Address)
+
+IP Address, Subnet Mask, Default Gateway
+
+DHCP and DNS information
+
+Purpose:
+Helps identify network hardware and troubleshoot issues.
+
+2) Execute Network Commands
+
+i. Check hostname:
+Command: hostname
+Description: Displays local system name
+
+ii. Get IP address:
+Command: ipconfig
+Description: Shows IP, subnet mask, and gateway
+
+iii. Get adapter details:
+Command: ipconfig /all
+Description: Displays MAC, DHCP, and DNS information
+
+iv. Check connectivity:
+Command: ping <IP>
+Description: Sends ICMP echo request to test connection
+
+v. Find route details:
+Command: tracert <IP>
+Description: Displays hops between source and destination
+
+vi. Get data delivery stats:
+Command: pathping <IP>
+Description: Shows packet loss and route performance
+
+vii. Check ARP cache:
+Command: arp -a
+Description: Displays IP–MAC mappings
+
+viii. Check active connections:
+Command: netstat -an
+Description: Lists TCP/UDP connections and listening ports
+
+3) Use Protocol Analyzer to Capture and Analyze ARP Packets
+
+i. ARP Packet Format
+
+Hardware Type
+
+Protocol Type
+
+Hardware Length
+
+Protocol Length
+
+Operation (Request/Reply)
+
+Sender MAC and IP
+
+Target MAC and IP
+
+ii. ARP Operation
+
+Host A broadcasts “Who has IP 192.168.1.2?”
+
+Host B replies “192.168.1.2 is at MAC 00:1A:2B:3C:4D:5E”
+
+Both update their ARP cache for faster communication
+
+Wireshark Filter: arp
+
+iii. Display Flow Graph
+In Wireshark: Statistics → Flow Graph
+Shows ARP Request → ARP Reply exchange between two hosts.
+
+4) Capture & Analyze PING & TRACERT Packets
+
+i. Capture Filter
+Used before capture to record specific packets.
+Examples:
+icmp – captures only ping packets
+host 192.168.1.5 – captures specific host traffic
+
+ii. Display Filter
+Used after capture to display filtered packets.
+Examples:
+icmp – shows only ping packets
+ip.addr == 192.168.1.2 – shows traffic to/from one host
+
+iii. ICMP Operation
+Used for network diagnostics and control messages.
+Ping uses Echo Request/Reply.
+Traceroute uses Time Exceeded messages.
+
+iv. ICMP Error Reporting Messages
+
+Destination Unreachable
+
+Time Exceeded
+
+Redirect Message
+
+Parameter Problem
+
+Source Quench (deprecated)
+
+5) Capture TCP Stream using Wireshark
+
+i. Concept of TCP Stream
+TCP is a connection-oriented protocol that ensures reliable delivery.
+In Wireshark: Right-click → Follow → TCP Stream
+
+ii. TCP Header Fields
+
+Source Port
+
+Destination Port
+
+Sequence Number
+
+Acknowledgment Number
+
+Header Length
+
+Flags (SYN, ACK, FIN, etc.)
+
+Window Size
+
+Checksum
+
+Urgent Pointer
+
+iii. TCP Three-Way Handshake
+
+SYN – Client initiates connection
+
+SYN + ACK – Server acknowledges
+
+ACK – Client confirms, connection established
+
+6) Configure FTP Server and Client Communication
+
+Ports Used:
+
+Control: 21
+
+Data: 20
+
+Client Command: ftp <server IP>
+
+i. Active and Passive FTP Sessions
+
+Active FTP:
+
+Client initiates control connection
+
+Server initiates data connection (port 20)
+
+May be blocked by firewalls
+
+Passive FTP:
+
+Client initiates both control and data connections
+
+Works better behind firewalls
+
+ii. Classification of Logical Ports
+
+0–1023: Well-known ports (HTTP 80, FTP 21, Telnet 23)
+1024–49151: Registered ports (custom apps)
+49152–65535: Dynamic/private ports (temporary client ports)
+
+iii. Applications of FTP
+
+Uploading/downloading website files
+
+Software updates
+
+Data backup and large file transfers
+
+7) Web Server Configuration and Communication
+
+i. HTTP and WWW
+HTTP (HyperText Transfer Protocol) defines communication between web client and server.
+WWW (World Wide Web) is the system of hyperlinked web pages accessed using HTTP.
+
+ii. Significance of index.html
+Default home page automatically loaded by web browsers when a directory is opened.
+
+iii. Port Numbers
+HTTP: 80
+HTTPS: 443 (secure via SSL/TLS)
+
+8) Telnet Server Configuration and Remote Logging
+
+Port: 23
+Command: telnet <server IP>
+Purpose: Remote login and command execution on another system.
+
+Wireshark Observation:
+Captured login details (username and password) appear as plain text.
+
+Comment on Security:
+Telnet is insecure because it transmits data unencrypted.
+SSH (Secure Shell) is preferred for secure remote access.
+
+9) DHCP Server Configuration
+
+ii. Four-Step DHCP Operation
+
+Discover – Client broadcasts for IP
+
+Offer – Server offers available IP
+
+Request – Client requests offered IP
+
+Acknowledge – Server confirms IP lease
+
+iii. Broadcast Communication
+Clients have no IP initially; broadcasts ensure servers receive the request.
+
+iv. DHCP Relay Agent
+Forwards DHCP messages between clients and servers on different networks or subnets.
+
+v. DHCP Lease Process
+
+IP assigned for limited duration (lease)
+
+Client renews before expiry
+
+Check status using: ipconfig /all
+
+10) Packet Tracer Network with 2 PCs, 2 Switches, 3 Routers
+
+Steps:
+
+Connect devices using straight cables.
+
+Assign IP addresses to all interfaces.
+
+Configure routing manually or use RIP.
+
+Verify with ping command between PCs.
+
+Explanation:
+Packets travel PC1 → Switch1 → Router1 → Router2 → Router3 → Switch2 → PC2.
+If routes are configured properly, ping replies confirm connectivity.
